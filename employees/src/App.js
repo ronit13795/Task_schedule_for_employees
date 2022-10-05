@@ -9,7 +9,7 @@ import Menu from "./Components/Menu/Menu";
 function App() {
   const tasks = [
     {
-      employee: "ronit",
+      employee: "ronita",
       description: "add button for move to another page",
       name: "button",
     },
