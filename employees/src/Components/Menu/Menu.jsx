@@ -10,12 +10,22 @@ export default function Menu() {
     useContext(context);
 
   const allTasks = () => {
-    setTasks(tasks);
+    const myTask = tasks.filter((task) => {
+      return !task.completed;
+    });
+    setTasks(myTask);
   };
 
   const myTasks = () => {
     const myTask = tasks.filter((task) => {
       return task.employee === name;
+    });
+    setTasks(myTask);
+  };
+
+  const history = () => {
+    const myTask = tasks.filter((task) => {
+      return task.completed;
     });
     setTasks(myTask);
   };
@@ -37,7 +47,7 @@ export default function Menu() {
       <button onClick={allTasks}>כל המשימות</button>
       <button onClick={myTasks}>המשימות שלי </button>
       <button> משימה חדשה</button>
-      <button>היסטוריה </button>
+      <button onClick={history}>היסטוריה </button>
       <button onClick={exit}>יציאה </button>
     </div>
   );

@@ -17,6 +17,8 @@ export default function Main() {
             key={index}
             responsibility={task.employee}
             name={task.name}
+            completed={task.completed}
+            description={task.description}
           />
         );
       })}
