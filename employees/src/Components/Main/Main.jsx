@@ -1,11 +1,19 @@
 import React from "react";
 import context from "../../context";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Task from "../Task/Task";
+import AddTask from "../AddTask/AddTask";
 
 export default function Main() {
-  const { name, setShowMenu, tasks, tasksToShow, setTasks } =
-    useContext(context);
+  const {
+    name,
+    setShowMenu,
+    tasks,
+    tasksToShow,
+    setTasks,
+    addTask,
+    setAddTask,
+  } = useContext(context);
 
   return (
     <div>
@@ -22,6 +30,7 @@ export default function Main() {
           />
         );
       })}
+      {addTask && <AddTask />}
     </div>
   );
 }

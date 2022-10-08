@@ -4,7 +4,7 @@ import context from "../../context";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function Menu() {
+export default function Menu({ setAddTask }) {
   const nav = useNavigate();
   const { setName, name, setShowMenu, tasks, tasksToShow, setTasks } =
     useContext(context);
@@ -18,7 +18,7 @@ export default function Menu() {
 
   const myTasks = () => {
     const myTask = tasks.filter((task) => {
-      return task.employee === name;
+      return task.employee === name && !task.completed;
     });
     setTasks(myTask);
   };
@@ -27,7 +27,7 @@ export default function Menu() {
     const myTask = tasks.filter((task) => {
       return task.completed;
     });
-    setTasks(myTask);
+    setTasks([...myTask]);
   };
 
   const exit = () => {
@@ -46,7 +46,14 @@ export default function Menu() {
     >
       <button onClick={allTasks}>כל המשימות</button>
       <button onClick={myTasks}>המשימות שלי </button>
-      <button> משימה חדשה</button>
+      <button
+        onClick={() => {
+          setAddTask(true);
+        }}
+      >
+        {" "}
+        משימה חדשה
+      </button>
       <button onClick={history}>היסטוריה </button>
       <button onClick={exit}>יציאה </button>
     </div>
